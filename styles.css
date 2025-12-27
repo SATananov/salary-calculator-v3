@@ -590,3 +590,69 @@ button {
         justify-content: center;
     }
 }
+
+/* ==================== MOBILE APP / SMALL SCREEN TWEAKS ==================== */
+@media (max-width: 480px) {
+    /* Reduce outer paddings so the UI fits well in mobile webviews */
+    body {
+        padding: 12px;
+        padding-top: calc(env(safe-area-inset-top, 0px) + 12px);
+        padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    /* Larger tappable areas for buttons/inputs */
+    button, .btn-upload, .btn-template, input, select {
+        padding: 14px 18px;
+        font-size: 1rem;
+        min-height: 44px; /* recommended touch target */
+    }
+
+    /* Make location selector full width */
+    .location-selector {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .location-badge {
+        padding: 8px 14px;
+        font-size: 0.95rem;
+    }
+
+    /* Prefer horizontal scrolling for wide tables on small screens
+       - Keeps native table semantics and avoids needing JS to add data-labels
+       - Allows users to pan the table horizontally if content is wide */
+    .table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Ensure the table keeps a comfortable minimum width so columns don't collapse */
+    .results-table {
+        min-width: 720px;
+    }
+
+    .results-table thead th {
+        white-space: nowrap;
+    }
+
+    .results-table td {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+
+    /* Actions full width */
+    .actions button {
+        width: 100%;
+    }
+
+    /* Make empty state spacing friendlier on small screens */
+    .empty-state {
+        padding: 24px;
+    }
+}
